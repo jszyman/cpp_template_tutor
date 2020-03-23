@@ -35,6 +35,7 @@ private:
 public:
     PairVals() : v1(0), v2(0) {};
     PairVals(T a, T b);
+    PairVals(const PairVals<T>& other);
 
     T getv1();
     T getv2();
@@ -46,6 +47,14 @@ PairVals<T>::PairVals(T a, T b)
 {
     v1 = a;
     v2 = b;
+}
+
+
+template <class T>
+PairVals<T>::PairVals(const PairVals<T>& other)
+{
+    //v1 = other.getv2();
+    //v2 = other.v1;
 }
 
 
@@ -74,9 +83,11 @@ int main()
     std::cout << "min <double, double> = " << getmin<double, double>(2.5, 2.4999) << std::endl;
 
     PairVals<int> pair0s = PairVals<int>();
-    PairVals<int> pair1_2 = PairVals<int>(1, 2);
     std::cout << "class PairVals<int>, v1 = " << pair0s.getv1() << " v2 = " << pair0s.getv2() << std::endl;
+    PairVals<int> pair1_2 = PairVals<int>(1, 2);
     std::cout << "class PairVals<int>, v1 = " << pair1_2.getv1() << " v2 = " << pair1_2.getv2() << std::endl;
+    PairVals<int> pairCp = PairVals<int>(pair1_2);
+    std::cout << "class PairVals<int>, v1 = " << pairCp.getv1() << " v2 = " << pairCp.getv2() << std::endl;
 
     std::cin.ignore();
 }
