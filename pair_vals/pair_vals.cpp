@@ -28,6 +28,41 @@ T1 getmin(T1 a, T2 b)
 }
 
 
+template <class T>
+class PairVals {
+private:
+    T v1, v2;
+public:
+    PairVals() : v1(0), v2(0) {};
+    PairVals(T a, T b);
+
+    T getv1();
+    T getv2();
+};
+
+
+template <class T>
+PairVals<T>::PairVals(T a, T b)
+{
+    v1 = a;
+    v2 = b;
+}
+
+
+template <class T>
+T PairVals<T>::getv1()
+{
+    return v1;
+}
+
+
+template <class T>
+T PairVals<T>::getv2()
+{
+    return v2;
+}
+
+
 int main()
 {
     std::cout << "max <int> = " << getmax<int>(3U, 2U) << std::endl;
@@ -37,6 +72,11 @@ int main()
     std::cout << "min <int, long> = " << getmin<int, long>(3U, 2U) << std::endl;
     std::cout << "min <unsigned char, int> = " << (int)getmin<unsigned char, int>(266, 255) << std::endl;
     std::cout << "min <double, double> = " << getmin<double, double>(2.5, 2.4999) << std::endl;
+
+    PairVals<int> pair0s = PairVals<int>();
+    PairVals<int> pair1_2 = PairVals<int>(1, 2);
+    std::cout << "class PairVals<int>, v1 = " << pair0s.getv1() << " v2 = " << pair0s.getv2() << std::endl;
+    std::cout << "class PairVals<int>, v1 = " << pair1_2.getv1() << " v2 = " << pair1_2.getv2() << std::endl;
 
     std::cin.ignore();
 }
