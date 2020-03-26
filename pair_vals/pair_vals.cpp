@@ -53,8 +53,8 @@ PairVals<T>::PairVals(T a, T b)
 template <class T>
 PairVals<T>::PairVals(const PairVals<T>& other)
 {
-    //v1 = other.getv2();
-    //v2 = other.v1;
+    v1 = other.v2;
+    v2 = other.v1;
 }
 
 
